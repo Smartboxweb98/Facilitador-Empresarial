@@ -22,7 +22,7 @@ public class ConnectionConsulta {
     public Statement stm;
     public ResultSet rs;
     public final static String DRIVER = "com.mysql.jdbc.Driver";
-    public final static String URL = "jdbc:mysql://192.168.16.41:3306/projetojava";
+    public final static String URL = "jdbc:mysql://192.168.16.53:3306/projetojava";
     public final static String USER = "todos";
     public final static String PASSWD = "1234";
     public Connection conn = null;

@@ -503,6 +503,7 @@ public class ConfirmacaoRecebimento extends javax.swing.JFrame {
             jComboBoxRec.setSelectedItem("");
             jComboBoxEntrega.setSelectedItem("");
             jTextFieldUsuario.setText("");
+            jButtonTodos1.setEnabled(false);
             jButtonAlterar.setEnabled(false);
             jComboBoxRec.setEnabled(false);
             jComboBoxEntrega.setEnabled(false);

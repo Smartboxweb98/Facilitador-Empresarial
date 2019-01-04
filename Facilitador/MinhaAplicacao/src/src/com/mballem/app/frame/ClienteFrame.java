@@ -2,17 +2,20 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mballem.app.frame;
+package src.com.mballem.app.frame;
 
+import src.com.mballem.app.Servidor;
 import com.mballem.app.bean.ChatMessage;
 import com.mballem.app.bean.ChatMessage.Action;
 import com.mballem.app.service.ClienteService;
+import com.mballem.app.service.ServidorService;
 import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import controle.ConnectionConsulta;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.Method;
 import java.net.Socket;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -160,6 +163,7 @@ public class ClienteFrame extends javax.swing.JFrame {
         txtAreaSend = new javax.swing.JTextArea();
         btnEnviar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
+        jButtonTodos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -248,6 +252,14 @@ public class ClienteFrame extends javax.swing.JFrame {
             }
         });
 
+        jButtonTodos.setText("Todos");
+        jButtonTodos.setEnabled(false);
+        jButtonTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTodosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -259,6 +271,8 @@ public class ClienteFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonTodos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnLimpar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEnviar)))
@@ -274,7 +288,8 @@ public class ClienteFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnviar)
-                    .addComponent(btnLimpar))
+                    .addComponent(btnLimpar)
+                    .addComponent(jButtonTodos))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -308,7 +323,7 @@ public class ClienteFrame extends javax.swing.JFrame {
 
     private void btnConnectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConnectarActionPerformed
         String name = this.txtName.getText();
-
+        jButtonTodos.setEnabled(true);
         if (!name.isEmpty()) {
             this.message = new ChatMessage();
             this.message.setAction(Action.CONNECT);
@@ -328,6 +343,7 @@ public class ClienteFrame extends javax.swing.JFrame {
         message.setName(this.message.getName());
         message.setAction(Action.DISCONNECT);
         this.service.send(message);
+        jButtonTodos.setEnabled(false);
         disconnected();
     }//GEN-LAST:event_btnSairActionPerformed
 
@@ -377,11 +393,18 @@ public class ClienteFrame extends javax.swing.JFrame {
         this.txtAreaSend.setText("");
     }//GEN-LAST:event_btnEnviarActionPerformed
 
+    private void jButtonTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTodosActionPerformed
+        // TODO add your handling code here:
+       
+        listOnlines.clearSelection();
+    }//GEN-LAST:event_jButtonTodosActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConnectar;
     private javax.swing.JButton btnEnviar;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnSair;
+    private javax.swing.JButton jButtonTodos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

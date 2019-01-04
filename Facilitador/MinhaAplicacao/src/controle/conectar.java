@@ -21,7 +21,7 @@ public class conectar {
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String servidor = "jdbc:mysql://192.168.16.41:3306/projetojava";
+            String servidor = "jdbc:mysql://192.168.16.53:3306/projetojava";
             String usuarioDB = "todos";
             String passwordDB = "1234";
             conexion = DriverManager.getConnection(servidor,usuarioDB, passwordDB);

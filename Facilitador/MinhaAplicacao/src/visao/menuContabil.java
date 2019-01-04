@@ -5,7 +5,7 @@
  */
 package visao;
 
-import com.mballem.app.frame.ClienteFrame;
+import src.com.mballem.app.frame.ClienteFrame;
 import com.mballem.app.service.ServidorService;
 
 /**
